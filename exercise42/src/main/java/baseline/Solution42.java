@@ -30,12 +30,11 @@ public class Solution42 {
         String inputLine;
 
         //Read in data to arraylist
-        //Begin loop
-        int x = 0;
+        int x = 0; // index counter
+        //Using earlier declarations, fill array list via loop
         while ((inputLine = bufferedReader.readLine()) != null) {
             people.add(x, app.organizeData(inputLine));
             x++;
-            //end loop
         }
 
         //Print table
@@ -51,11 +50,13 @@ public class Solution42 {
 
     //Split into separate method for organization purposes
     private void printTable(List<String[]> people) {
+        //Print to console (no output file specifier in instructions)
         //Format table
-        System.out.format("%s%13s%13s\n", "Last", "First", "Salary");
-        System.out.println("------------------------------");
+        System.out.format("%s%13s%13s\n", "Last", "First", "Salary"); // categories
+        System.out.println("------------------------------"); // divider
         //Print data from arraylist into formatted table
         for (String[] i : people) {
+            //Use format again to line up columns
             System.out.format("%-12s%-12s%-13s\n",i[0],i[1],i[2]);
         }
     }
