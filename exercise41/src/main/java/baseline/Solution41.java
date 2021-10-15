@@ -41,6 +41,7 @@ public class Solution41 {
         fileWriter.close();
     }
 
+    //Separated even though only declared once, so I can use it in test case
     public List<String> sortAlphabet(File inputFile) throws IOException {
         FileReader fileReader = new FileReader(inputFile);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
