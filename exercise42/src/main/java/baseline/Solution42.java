@@ -11,9 +11,12 @@ Process the records and display the results formatted as a table, evenly spaced,
  */
 package baseline;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Solution42 {
@@ -23,18 +26,34 @@ public class Solution42 {
         File inputFile = new File("src\\main\\resources\\exercise42_input.txt");
         //Declare array list of arrays (will be used to store people)
         List<String[]> people = new ArrayList<>();
+        //Declare variables for reading file
+        FileReader fileReader = new FileReader(inputFile);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String inputLine;
 
         //Read in data to arraylist
         //Begin loop
-        people[x] = app.getPersonData();
-        //end loop
+        int x = 0;
+        while ((inputLine = bufferedReader.readLine()) != null) {
+            people.add(x, app.getPersonData(inputLine));
+            x++;
+            //end loop
+        }
         //Format table
-        //Print data from arraylist into formatted table
+        //String fName, lName, salary;
+        //fName = people.get(1)[0];
+        System.out.format("%s%12s%13s\n", "Last", "First", "Salary");
+        System.out.println("------------------------------");
+            //Print data from arraylist into formatted table
+        for (String[] i : people) {
+            System.out.format("%-11s%-12s%-12s\n",i[0],i[1],i[2]);
+        }
     }
 
-    private List<String> getPersonData() {
+    //Split off in order for proper use in test case
+    private String[] getPersonData(String inputLine) {
         //Store each row as an individual array
-        //Use row.split to divide at comma
-        return null;
+        //Use split to divide at comma
+        return inputLine.split(",");
     }
 }
