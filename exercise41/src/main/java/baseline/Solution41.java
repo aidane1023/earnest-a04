@@ -12,28 +12,54 @@ Then print the sorted list to a file called `exercise41_output.txt`
 package baseline;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Solution41 {
-    public static void main(String[] args) {
+    private static int counter = 0;
+    public static void main(String[] args) throws IOException {
         Solution41 app = new Solution41();
         //Declare files
-        String inputFile = "input.txt";
-        String outputFile = "output.txt";
+        File inputFile = new File("src\\main\\resources\\exercise41_input.txt");
+        String outputFile = "exercise41_output.txt";
+        //Declare variables
+        FileWriter fileWriter = new FileWriter(outputFile);
+        PrintWriter out = new PrintWriter(fileWriter);
+        List<String> sorted;
 
         //Read and alphabetically sort contents of input file
-        List sorted = app.sortAlphabet();
+        sorted = app.sortAlphabet(inputFile);
         //Format output file
+        out.println("Total of "+ counter +" names \n-----------------");
         //Write contents of alphabetized input file into formatted output file
+        for (Object outputLine : sorted) {
+            out.println(outputLine);
+        }
+        out.flush();
+        out.close();
+        fileWriter.close();
     }
 
-    private List sortAlphabet() {
+    public List<String> sortAlphabet(File inputFile) throws IOException {
+        FileReader fileReader = new FileReader(inputFile);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String inputLine;
+        List<String> lineList = new ArrayList<>();
+
         //Begin loop
-        //Read each line from file
+        while ((inputLine = bufferedReader.readLine()) != null) {
+            //Read each line from file
+            lineList.add(inputLine);
+            counter++;
+        }
         //End loop
+        fileReader.close();
+
         //Sort using collections
+        Collections.sort(lineList);
 
         //Return sorted list
-        return null;
+        return lineList;
     }
 }
