@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="baseline.Solution42Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-15T20:25:17" hostname="DESKTOP-BKLQ23J" time="0.021">
+  <properties/>
+  <testcase name="test_organizeData()" classname="baseline.Solution42Test" time="0.021"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

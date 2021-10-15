@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Solution42 {
@@ -27,33 +26,37 @@ public class Solution42 {
         //Declare array list of arrays (will be used to store people)
         List<String[]> people = new ArrayList<>();
         //Declare variables for reading file
-        FileReader fileReader = new FileReader(inputFile);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFile));
         String inputLine;
 
         //Read in data to arraylist
         //Begin loop
         int x = 0;
         while ((inputLine = bufferedReader.readLine()) != null) {
-            people.add(x, app.getPersonData(inputLine));
+            people.add(x, app.organizeData(inputLine));
             x++;
             //end loop
         }
-        //Format table
-        //String fName, lName, salary;
-        //fName = people.get(1)[0];
-        System.out.format("%s%12s%13s\n", "Last", "First", "Salary");
-        System.out.println("------------------------------");
-            //Print data from arraylist into formatted table
-        for (String[] i : people) {
-            System.out.format("%-11s%-12s%-12s\n",i[0],i[1],i[2]);
-        }
+
+        //Print table
+        app.printTable(people);
     }
 
     //Split off in order for proper use in test case
-    private String[] getPersonData(String inputLine) {
+    public String[] organizeData(String inputLine) {
         //Store each row as an individual array
         //Use split to divide at comma
         return inputLine.split(",");
+    }
+
+    //Split into separate method for organization purposes
+    private void printTable(List<String[]> people) {
+        //Format table
+        System.out.format("%s%13s%13s\n", "Last", "First", "Salary");
+        System.out.println("------------------------------");
+        //Print data from arraylist into formatted table
+        for (String[] i : people) {
+            System.out.format("%-12s%-12s%-13s\n",i[0],i[1],i[2]);
+        }
     }
 }
