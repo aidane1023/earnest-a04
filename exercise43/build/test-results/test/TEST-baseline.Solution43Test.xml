@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="baseline.Solution43Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-10-16T17:34:09" hostname="DESKTOP-BKLQ23J" time="0.032">
+  <properties/>
+  <testcase name="test_fileWrite()" classname="baseline.Solution43Test" time="0.025"/>
+  <testcase name="test_conditional1()" classname="baseline.Solution43Test" time="0.005"/>
+  <testcase name="test_conditional2()" classname="baseline.Solution43Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

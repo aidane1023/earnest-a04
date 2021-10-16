@@ -11,18 +11,20 @@ public class Solution43 {
         //Declare Strings for user input
         String websiteName;
         String authorName;
+
         //Get user input
         websiteName = app.getStringFromUser("Site name:");
         authorName = app.getStringFromUser("Author:");
         //Construct directory (title it the variable websiteName)
         new File("./website/"+ websiteName).mkdirs();
+
         //If response is "y" to either folder question, construct corresponding directory
         app.getConditionalFromUser(1, websiteName);
         app.getConditionalFromUser(2, websiteName);
+
         //Construct file, add in both variables (websiteName and authorName) with appropriate tags
         File indexFile = new File("./website/" + websiteName + "/index.html");
         app.constructHTML(indexFile, websiteName, authorName);
-        //Print prompt listing what was constructed
     }
 
     private String getStringFromUser(String prompt) {
@@ -70,7 +72,7 @@ public class Solution43 {
     private void constructHTML(File indexFile, String websiteName, String authorName) {
         try {
             FileWriter myWriter = new FileWriter(indexFile);
-            myWriter.write("");
+            myWriter.write("<!DOCTYPE html>\n<HTML>\n<title>"+ websiteName +"</title>\n<meta>"+ authorName +"</meta>");
             myWriter.close();
         } catch (IOException e) {
             System.out.println("An error occurred.");
