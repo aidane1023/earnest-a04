@@ -23,8 +23,11 @@ public class Solution43 {
         app.getConditionalFromUser(2, websiteName);
 
         //Construct file, add in both variables (websiteName and authorName) with appropriate tags
-        File indexFile = new File("./website/" + websiteName + "/index.html");
+        File indexFile = new File("./website/" + websiteName +"/index.html");
         app.constructHTML(indexFile, websiteName, authorName);
+
+        //Print what was constructed
+        System.out.println("Created ./website/"+websiteName+"\n Check program's working directory");
     }
 
     private String getStringFromUser(String prompt) {
