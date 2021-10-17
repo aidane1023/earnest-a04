@@ -9,9 +9,9 @@ class Solution43Test {
     @Test
     void test_fileWrite() {
         String test = "testCase.txt";
-        BufferedWriter output = null;
+        FileWriter output = null;
         try {
-            output = new BufferedWriter(new FileWriter(test));
+            output = new FileWriter(String.valueOf(new FileWriter(test)));
             output.write("passed");
         } catch (IOException e) {
             System.out.println("error, test failed");
