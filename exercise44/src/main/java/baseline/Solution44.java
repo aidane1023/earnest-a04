@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Solution44 {
@@ -27,7 +28,7 @@ public class Solution44 {
         File inputFile = new File("src\\main\\resources\\exercise44_input.json");
         //Parsing the Declared file
         try {
-            JsonReader productReader = new JsonReader(new FileReader("exercise44_input.json"));
+            JsonReader productReader = new JsonReader(new FileReader(inputFile));
             //Declare String for user input
             String item;
 
@@ -50,12 +51,60 @@ public class Solution44 {
         return in.nextLine();
     }
 
-    private void parseJson(String itemToFind, JsonReader jsonReader) {
-        //Use Reader to parse file
-        //Record data from parse into arrays
+    public void parseJson(String itemToFind, JsonReader jsonReader) {
+        //Declare array and counter
+        String[] productData = new String[20];
+        int counter = 0;
+
+        try {
+            //Use Reader to parse file
+            jsonReader.beginObject();
+            while (jsonReader.hasNext()) {
+                String name = jsonReader.nextName();
+                if (name.equals("products")) {
+                    jsonReader.beginArray();
+                    while (jsonReader.hasNext()) {
+                        jsonReader.beginObject();
+                        while (jsonReader.hasNext()) {
+                            String n = jsonReader.nextName();
+                            String data = jsonReader.nextString();
+                            //Record data from parse into arrays
+                            productData[counter] = data;
+                            counter++;
+                        }
+                        jsonReader.endObject();
+                    }
+                    jsonReader.endArray();
+                }
+            }
+            jsonReader.endObject();
+            }
+        catch (IOException e) {
+            System.out.println("Error occurred");
+        }
+        compareDataToUser(productData, itemToFind, jsonReader);
+    }
+
+    private void compareDataToUser(String[] productData, String itemToFind, JsonReader jsonReader) {
         //Test against user data
-        //If item isn't present, loop back to get user data
-        //If item is present, print item name, price, and quantity
+        if (Arrays.asList(productData).contains(itemToFind)) {
+            //If item is present, print item name, price, and quantity
+            if (itemToFind.equalsIgnoreCase("Widget")) {
+                System.out.println("Name: "+productData[0]+"\nPrice: "+productData[1]+"\nQuantity: "+productData[2]);
+            }
+            if (itemToFind.equalsIgnoreCase( "Thing")) {
+                System.out.println("Name: "+productData[3]+"\nPrice: "+productData[4]+"\nQuantity: "+productData[5]);
+            }
+            if (itemToFind.equalsIgnoreCase( "Doodad")) {
+                System.out.println("Name: "+productData[6]+"\nPrice: "+productData[7]+"\nQuantity: "+productData[8]);
+            }
+        }
+        else {
+            //If item isn't present, loop back to get user data
+            System.out.println("Sorry, that product was not found in our inventory.");
+            itemToFind = getStringFromUser();
+            parseJson(itemToFind,jsonReader);
+        }
     }
 
     private static final Scanner in = new Scanner(System.in);
