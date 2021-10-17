@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="baseline.Solution44Test" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-17T08:58:51" hostname="DESKTOP-BKLQ23J" time="0.031">
+  <properties/>
+  <testcase name="test_jsonReaderParse()" classname="baseline.Solution44Test" time="0.026"/>
+  <testcase name="test_compare()" classname="baseline.Solution44Test" time="0.004"/>
+  <system-out><![CDATA[error, fail
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
