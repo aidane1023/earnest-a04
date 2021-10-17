@@ -9,41 +9,30 @@ class Solution43Test {
     @Test
     void test_fileWrite() {
         String test = "testCase.txt";
+        BufferedWriter output = null;
         try {
-            FileWriter myWriter = new FileWriter(test);
-            myWriter.write("some message");
-            myWriter.close();
+            output = new BufferedWriter(new FileWriter(test));
+            output.write("passed");
         } catch (IOException e) {
-            System.out.println("test failed");
+            System.out.println("error, test failed");
+        }
+        finally {
+            assertNotNull(output);
         }
     }
 
     @Test
     void test_conditional1() {
-        String conditional = "yes";
-        boolean gate = false;
-        if (conditional.equalsIgnoreCase( "y") || conditional.equalsIgnoreCase("n")) {
-            gate = false;
-        }
-        else {
-            gate = true;
-        }
-
-        assertTrue(gate);
+        String conditional = "y";
+        String changeCase = conditional.toUpperCase();
+        assertTrue(changeCase.equalsIgnoreCase("y"));
     }
 
     @Test
     void test_conditional2() {
-        String conditional = "y";
-        boolean gate = false;
-        if (conditional.equalsIgnoreCase( "y") || conditional.equalsIgnoreCase("n")) {
-            gate = true;
-        }
-        else {
-            gate = false;
-        }
-
-        assertTrue(gate);
+        String conditional = "no";
+        String changeCase = conditional.toUpperCase();
+        assertFalse(changeCase.equalsIgnoreCase("n"));
     }
 
 }
