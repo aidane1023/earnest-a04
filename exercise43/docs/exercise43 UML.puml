@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Solution42 {
+-Scanner in
++main(String[] args)
+-getStringFromUser(String prompt)
+-getConditionalFromUser(int path, String websiteName)
+-constructHTML(File indexFile, String websiteName, String authorName)
+}
+
+
+@enduml
