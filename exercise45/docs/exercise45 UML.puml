@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Solution42 {
+-Scanner in
++main(String[] args)
++getStringFromUser()
++String readInputFile(BufferedReader reader)
+-buildOutputFile(FileWriter writer, String replacedText)
+}
+
+
+@enduml

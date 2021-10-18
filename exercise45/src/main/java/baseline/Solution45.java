@@ -41,7 +41,7 @@ public class Solution45 {
 
     }
 
-    private String getStringFromUser() {
+    public String getStringFromUser() {
         //Prompt user for data
         System.out.println("Name of output file:");
         String tempName = in.nextLine();
@@ -53,7 +53,7 @@ public class Solution45 {
         return tempName;
     }
 
-    private String readInputFile(BufferedReader reader) {
+    public String readInputFile(BufferedReader reader) {
         //Read in contents of input file via buffer reader
         String line;
         StringBuilder oldText = new StringBuilder();
