@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Solution42 {
++main(String[] args)
++readInputFile(File inputFile)
+-buildFrequencyMap(Map<String, Integer> freqMap, List<String> fileToList)
+}
+
+
+@enduml
